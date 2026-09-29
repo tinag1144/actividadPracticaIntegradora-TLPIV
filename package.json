@@ -4,7 +4,7 @@
   "description": "Documentcación del Trabajo Integrador --",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx watch backend/src/server.ts"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "dotenv": "^18.0.4",
+    "express": "^5.2.1",
     "mongoose": "^9.10.2"
   }
 }
