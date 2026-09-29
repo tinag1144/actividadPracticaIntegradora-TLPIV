@@ -444,18 +444,19 @@ Para mantener el alcance básico, **no** se exige: tests automatizados, notifica
 Copiar la siguiente plantilla en el `README.md` del proyecto y completarla.
 
 ````markdown
-# [Nombre del proyecto]
+#  Tech Store
 
-**Dominio:** [A / B / C / D — nombre]
-**Base de datos:** [PostgreSQL + Sequelize / MongoDB + Mongoose]
-**Organización del backend:** [Carpeta por tipo de archivo / Carpeta por módulo]
+**Dominio:** [D — Tienda de tecnología]
+**Base de datos:** [MongoDB + Mongoose]
+**Organización del backend:** [Carpeta por módulo]
 
 ## Integrantes
-- Apellido, Nombre — usuario de GitHub
-- Apellido, Nombre — usuario de GitHub
+- Britez, Selena — sbrittz
+- García, Diego — dot-Hawk
+- Gonzalez, Agostina — tinag1144
 
 ## Descripción
-[Dos o tres oraciones sobre qué hace la aplicación.]
+[Aplicación web full stack para una tienda de tecnología que permite gestionar un catálogo de productos y sus estados (disponible, sin stock o discontinuado). Los usuarios pueden suscribirse a los productos y recibir una notificación cada vez que cambia su estado, en su bandeja y en la consola del backend.]
 
 ## Requisitos previos
 - Docker y Docker Compose
