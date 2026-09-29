@@ -4,7 +4,7 @@
   "description": "Documentcación del Trabajo Integrador --",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch backend/src/server.ts"
+    "dev": "tsx watch src/server.ts"
   },
   "repository": {
     "type": "git",
