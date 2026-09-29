@@ -1,0 +1,26 @@
+{
+  "name": "actividadpracticaintegradora-tlpiv",
+  "version": "1.0.0",
+  "description": "Documentcación del Trabajo Integrador --",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tinag1144/actividadPracticaIntegradora-TLPIV.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/tinag1144/actividadPracticaIntegradora-TLPIV/issues"
+  },
+  "homepage": "https://github.com/tinag1144/actividadPracticaIntegradora-TLPIV#readme",
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.3",
+    "@types/typescript": "^0.4.29"
+  }
+}
