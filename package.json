@@ -22,5 +22,9 @@
     "@types/express": "^5.0.6",
     "@types/node": "^26.6.3",
     "@types/typescript": "^0.4.29"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.4",
+    "mongoose": "^9.10.2"
   }
 }
