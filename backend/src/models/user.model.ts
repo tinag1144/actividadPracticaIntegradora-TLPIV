@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 import { type IUser } from "./interfaces/IUser.interface.js";
+import "./role.model.js";
 
 
 export const UserSchema = new Schema<IUser>(
