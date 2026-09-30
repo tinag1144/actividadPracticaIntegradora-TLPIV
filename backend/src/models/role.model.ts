@@ -6,4 +6,4 @@ const RoleSchema = new Schema<IRole>({
   permissions: [{ type: Schema.Types.ObjectId, ref: "Permission" }],
 });
 
-export const Roles = model<IRole>("Role", RoleSchema);
+export const Role = model<IRole>("Role", RoleSchema);
