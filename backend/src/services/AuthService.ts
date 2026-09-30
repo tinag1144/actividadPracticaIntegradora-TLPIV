@@ -59,7 +59,8 @@ export class AuthService {
     const expiresIn = process.env.JWT_EXPIRES_IN;
 
     if (!secret || !expiresIn) {
-      throw new Error("Internal server error")
+      console.error("JWT_SECRET or JWT_EXPIRES_IN not set");
+      throw new Error("Internal server error");
     }
 
     const token = jwt.sign({ id: user._id.toHexString() }, secret, { expiresIn: expiresIn as NonNullable<SignOptions["expiresIn"]> })
