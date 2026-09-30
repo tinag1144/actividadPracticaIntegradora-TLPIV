@@ -2,7 +2,7 @@ import { type IUserRepository } from "../repositories/interfaces/IUserRepository
 import { type IRoleRepository } from "../repositories/interfaces/IRoleRepository.js";
 import { ConflictError } from "../errors/ConflictError.js";
 import bcrypt from "bcrypt";
-import { type IRegisteredUser } from "./IRegisteredUser.js";
+import { type IRegisteredUser } from "./interfaces/IRegisteredUser.js";
 
 
 export class AuthService {
@@ -27,7 +27,8 @@ export class AuthService {
       throw new Error("Role not found");
     }
 
-    const passHash = await bcrypt.hash(password, 10)
+    const SALT_ROUND: number = 10;
+    const passHash = await bcrypt.hash(password, SALT_ROUND)
 
     const newUser = await this.userRepository.create({ email, password: passHash, role: role._id })
 
