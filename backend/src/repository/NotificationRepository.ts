@@ -21,10 +21,7 @@ export class NotificationRepository implements INotificationRepository {
     return unreadCount;
   }
 
-  async markAsRead(
-    notificationId: string,
-    userId: string,
-  ): Promise<Notification | null> {
+  async markAsRead( notificationId: string, userId: string, ): Promise<Notification | null> {
     const updatedNotification = await NotificationModel.findOneAndUpdate(
     {
       _id: notificationId,

@@ -1,6 +1,6 @@
 //acá defino el contrato del repositorio de notificaciones 
 
-import type { Notification } from "./notification.interface.js";
+import type { Notification } from "../../models/interfaces/notification.interface.js";
 
 export interface INotificationRepository {
 
