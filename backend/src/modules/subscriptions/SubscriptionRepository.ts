@@ -19,6 +19,13 @@ export class SubscriptionRepository implements ISubscriptionRepository {
       .exec();
   }
 
+  async findByProductId(productId: number): Promise<Subscription[]> {
+    return SubscriptionModel.find({ productId })
+      .select({ _id: 0, userId: 1, productId: 1, createdAt: 1, updatedAt: 1 })
+      .lean<Subscription[]>()
+      .exec();
+  }
+
   async create(userId: number, productId: number): Promise<Subscription> {
     try {
       const document = await SubscriptionModel.create({ userId, productId });
