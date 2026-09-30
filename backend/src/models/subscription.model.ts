@@ -4,7 +4,7 @@ import type { Subscription } from "../modules/subscriptions/Subscription.js";
 const SubscriptionSchema = new Schema<Subscription>(
   {
     userId: { type: Number, required: true, min: 1 },
-    productId: { type: Number, required: true, min: 1 },
+    productId: { type: String, required: true },
   },
   { timestamps: true, versionKey: false },
 );

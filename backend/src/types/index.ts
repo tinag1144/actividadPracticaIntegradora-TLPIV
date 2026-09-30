@@ -24,7 +24,7 @@ export interface JwtPayload {
 }
 
 export interface ProductStatusChangedEvent {
-  productId: number;
+  productId: string;
   productName: string;
   oldStatus: ProductStatus;
   newStatus: ProductStatus;

@@ -23,7 +23,7 @@ export class ProductRepository implements IProductRepository {
     return documents.map(toProduct);
   }
 
-  async findById(id: number): Promise<Product | null> {
+  async findById(id: string): Promise<Product | null> {
     const document = await ProductModel.findOne({ id }).exec();
     return document ? toProduct(document) : null;
   }
@@ -33,7 +33,7 @@ export class ProductRepository implements IProductRepository {
     return toProduct(document);
   }
 
-  async update(id: number, changes: ProductUpdate): Promise<Product | null> {
+  async update(id: string, changes: ProductUpdate): Promise<Product | null> {
     const document = await ProductModel.findOneAndUpdate({ id }, changes, {
       new: true,
       runValidators: true,
@@ -42,7 +42,7 @@ export class ProductRepository implements IProductRepository {
   }
 
   async updateStatus(
-    id: number,
+    id: string,
     status: ProductStatus,
   ): Promise<Product | null> {
     const document = await ProductModel.findOneAndUpdate(
@@ -53,7 +53,7 @@ export class ProductRepository implements IProductRepository {
     return document ? toProduct(document) : null;
   }
 
-  async delete(id: number): Promise<boolean> {
+  async delete(id: string): Promise<boolean> {
     const result = await ProductModel.deleteOne({ id }).exec();
     return result.deletedCount > 0;
   }

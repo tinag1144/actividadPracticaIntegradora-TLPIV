@@ -1,7 +1,7 @@
 import type { ProductStatus } from "../../types/index.js";
 
 export interface Product {
-  id: number;
+  id: string;
   name: string;
   description: string;
   status: ProductStatus;

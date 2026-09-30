@@ -3,7 +3,7 @@ import type { IProduct } from "./interfaces/product.interface.js";
 
 export const ProductSchema = new Schema<IProduct>(
   {
-    id: { type: Number, required: true, unique: true, min: 1 },
+    id: { type: String, required: true, unique: true },
     name: { type: String, required: true },
     description: { type: String, required: true },
     status: {

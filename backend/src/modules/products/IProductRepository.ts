@@ -3,9 +3,9 @@ import type { Product, ProductInput, ProductUpdate } from "./Product.js";
 
 export interface IProductRepository {
   findAll(): Promise<Product[]>;
-  findById(id: number): Promise<Product | null>;
+  findById(id: string): Promise<Product | null>;
   create(input: ProductInput): Promise<Product>;
-  update(id: number, changes: ProductUpdate): Promise<Product | null>;
-  updateStatus(id: number, status: ProductStatus): Promise<Product | null>;
-  delete(id: number): Promise<boolean>;
+  update(id: string, changes: ProductUpdate): Promise<Product | null>;
+  updateStatus(id: string, status: ProductStatus): Promise<Product | null>;
+  delete(id: string): Promise<boolean>;
 }

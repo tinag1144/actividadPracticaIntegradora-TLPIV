@@ -1,6 +1,6 @@
 export interface Subscription {
   userId: number;
-  productId: number;
+  productId: string;
   createdAt: Date;
   updatedAt: Date;
 }
