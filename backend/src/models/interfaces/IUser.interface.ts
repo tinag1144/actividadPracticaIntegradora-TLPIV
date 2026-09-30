@@ -1,9 +1,7 @@
-import { type Document } from "mongoose";
-
-type Role = 'admin' | 'operador' | 'usuario';
+import { type Document, type Types } from "mongoose";
 
 export interface IUser extends Document {
-  username: string;
+  email: string;
   password: string;
-  role: Role;
+  role: Types.ObjectId;
 }
