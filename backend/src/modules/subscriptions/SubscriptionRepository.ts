@@ -12,7 +12,7 @@ const isDuplicateKeyError = (error: unknown): boolean =>
   error.code === 11000;
 
 export class SubscriptionRepository implements ISubscriptionRepository {
-  async find(userId: number, productId: string): Promise<Subscription | null> {
+  async find(userId: string, productId: string): Promise<Subscription | null> {
     return SubscriptionModel.findOne({ userId, productId })
       .select({ _id: 0, userId: 1, productId: 1, createdAt: 1, updatedAt: 1 })
       .lean<Subscription>()
@@ -26,7 +26,7 @@ export class SubscriptionRepository implements ISubscriptionRepository {
       .exec();
   }
 
-  async create(userId: number, productId: string): Promise<Subscription> {
+  async create(userId: string, productId: string): Promise<Subscription> {
     try {
       const document = await SubscriptionModel.create({ userId, productId });
       return {
@@ -41,7 +41,7 @@ export class SubscriptionRepository implements ISubscriptionRepository {
     }
   }
 
-  async delete(userId: number, productId: string): Promise<boolean> {
+  async delete(userId: string, productId: string): Promise<boolean> {
     const result = await SubscriptionModel.deleteOne({
       userId,
       productId,

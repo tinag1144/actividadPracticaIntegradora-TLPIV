@@ -9,7 +9,7 @@ export class SubscriptionService {
     private readonly productRepository: IProductRepository,
   ) {}
 
-  async isSubscribed(userId: number, productId: string): Promise<boolean> {
+  async isSubscribed(userId: string, productId: string): Promise<boolean> {
     const subscription = await this.subscriptionRepository.find(
       userId,
       productId,
@@ -17,7 +17,7 @@ export class SubscriptionService {
     return subscription !== null;
   }
 
-  async subscribe(userId: number, productId: string): Promise<void> {
+  async subscribe(userId: string, productId: string): Promise<void> {
     const product = await this.productRepository.findById(productId);
     if (!product) throw new HttpError(404, "Product not found");
 
@@ -35,7 +35,7 @@ export class SubscriptionService {
     }
   }
 
-  async unsubscribe(userId: number, productId: string): Promise<void> {
+  async unsubscribe(userId: string, productId: string): Promise<void> {
     const deleted = await this.subscriptionRepository.delete(userId, productId);
     if (!deleted) throw new HttpError(404, "Subscription not found");
   }

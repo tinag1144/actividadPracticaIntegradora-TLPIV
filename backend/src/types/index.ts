@@ -17,7 +17,7 @@ export type PermissionName =
   | "user:assign-role";
 
 export interface JwtPayload {
-  userId: number;
+  userId: string;
   email: string;
   role: RoleName;
   permissions: PermissionName[];
@@ -28,6 +28,6 @@ export interface ProductStatusChangedEvent {
   productName: string;
   oldStatus: ProductStatus;
   newStatus: ProductStatus;
-  changedByUserId: number;
+  changedByUserId: string;
   occurredAt: Date;
 }

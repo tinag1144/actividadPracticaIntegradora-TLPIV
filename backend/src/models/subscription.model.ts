@@ -3,7 +3,7 @@ import type { Subscription } from "../modules/subscriptions/Subscription.js";
 
 const SubscriptionSchema = new Schema<Subscription>(
   {
-    userId: { type: Number, required: true, min: 1 },
+    userId: { type: String, required: true },
     productId: { type: String, required: true },
   },
   { timestamps: true, versionKey: false },
