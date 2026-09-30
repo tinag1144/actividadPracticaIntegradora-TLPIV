@@ -1,11 +1,5 @@
 
-//los únicos estados que puede tener un producto en la tienda 
-
-export type ProductStatus = 'DISPONIBLE' | 'SIN_STOCK' | 'DISCONTINUADO'
-//type: para crear alias o nombres personalizados para un tipo de dato 
-
-//canales de envío permitidos 
-export type NotifierChannel = 'inapp' | 'console';
+import type { ProductStatus } from "../../types/index.js";
 
 //notificación dentro de la aplicación 
 export interface Notification {

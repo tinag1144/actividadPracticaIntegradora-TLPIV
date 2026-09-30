@@ -1,7 +1,8 @@
 //acá defino el modelo de mongoose para las notificaciones 
 
 import { Schema, model } from "mongoose";
-import { type Notification, type ProductStatus } from "./interfaces/notification.interface.js";
+import type { ProductStatus } from "../types/index.js";
+import { type Notification } from "./interfaces/notification.interface.js";
 
 //estados permitidos para validar oldStatus y newStatus
 const PRODUCT_STATUSES: ProductStatus[] = [

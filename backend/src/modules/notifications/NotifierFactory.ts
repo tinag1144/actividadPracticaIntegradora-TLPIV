@@ -1,6 +1,6 @@
 //acá implemento el factory method para centralizar la creacion de los disintos canales de notificacion 
 
-import type { NotifierChannel } from "../../models/interfaces/notification.interface.js";
+import type { NotifierChannel } from "../../types/index.js";
 import type { INotificationRepository } from "../../repository/interfaces/INotificationRepository.js";
 import type { INotifier } from "./INotifier.js";
 import { InAppNotifier } from "./InAppNotifier.js";
