@@ -6,6 +6,7 @@ import type { ISubscriptionRepository } from "../subscriptions/ISubscriptionRepo
 import type { IUserRepository } from "../../repositories/interfaces/IUserRepository.js";
 import type { Notification } from "../../models/interfaces/notification.interface.js";
 import { NotifierFactory } from "./NotifierFactory.js";
+import type { INotificationRepository } from "../../repository/interfaces/INotificationRepository.js"; //agrego al repository pq ahora el service tambien va a necesitar consultar y modificar notificaciones ya guardadas en la bd
 
 export class NotificationService
   implements IObserver<ProductStatusChangedEvent> //implementa Iobserver y observa eventos de tipo ProductStatusChangedEvent
@@ -14,6 +15,7 @@ export class NotificationService
   constructor(
     private readonly subscriptionRepository: ISubscriptionRepository,
     private readonly userRepository: IUserRepository,
+    private readonly notificationRepository: INotificationRepository,
     private readonly notifierFactory: NotifierFactory,
   ) {}
 
@@ -57,4 +59,19 @@ export class NotificationService
       await consoleNotifier.send(notification); //la muestra
     }
   }
+
+  //devuelve todas las notificaciones de un usuario.
+async getByUserId(userId: string): Promise<Notification[]> {
+  return this.notificationRepository.findByUserId(userId)
+}
+
+//devuelve la cantidad de notificaciones no leídas.
+async countUnread(userId: string): Promise<number> {
+  return this.notificationRepository.countUnreadNotif(userId)
+}
+
+//marca una notificación como leída.
+async markAsRead( notificationId: string, userId: string,): Promise<Notification | null> {
+  return this.notificationRepository.markAsRead( notificationId, userId );
+}
 }
