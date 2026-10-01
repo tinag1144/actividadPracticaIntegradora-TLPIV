@@ -1,14 +1,15 @@
 import { Schema, model } from "mongoose";
-import {type IUser } from "./interfaces/user.interface.js";
+import { type IUser } from "./interfaces/IUser.interface.js";
+import "./role.model.js";
 
 
-export const UserModel = new Schema<IUser>(
+export const UserSchema = new Schema<IUser>(
   {
-    username: { type: String, required: true },
+    email: { type: String, required: true, unique: true, lowercase: true },
     password: { type: String, required: true },
-    role: { type: String, enum: ["admin", "operador", "usuario"], required: true },
+    role: { type: Schema.Types.ObjectId, ref: "Role", required: true },
   },
   { timestamps: true },
 );
 
-export const User = model<IUser>("User", UserModel);
+export const User = model<IUser>("User", UserSchema);
