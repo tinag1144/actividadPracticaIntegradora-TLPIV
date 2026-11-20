@@ -1,0 +1,42 @@
+{
+  "name": "actividadpracticaintegradora-tlpiv",
+  "version": "1.0.0",
+  "description": "Documentcación del Trabajo Integrador --",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "seed": "tsx src/seedDb/seed.ts",
+    "start": "tsx src/main.ts",
+    "typecheck": "tsc --noEmit -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tinag1144/actividadPracticaIntegradora-TLPIV.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/tinag1144/actividadPracticaIntegradora-TLPIV/issues"
+  },
+  "homepage": "https://github.com/tinag1144/actividadPracticaIntegradora-TLPIV#readme",
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^26.6.3",
+    "@types/typescript": "^0.4.29",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.4",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.10.3"
+  }
+}
