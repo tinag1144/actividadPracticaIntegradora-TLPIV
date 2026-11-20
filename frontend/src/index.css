@@ -39,6 +39,7 @@ body {
 
 .nav-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   flex: 1;
 }
@@ -55,6 +56,7 @@ body {
 
 .nav-user {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.75rem;
   color: var(--muted);
@@ -93,7 +95,8 @@ label {
 }
 
 input,
-select {
+select,
+textarea {
   padding: 0.5rem 0.6rem;
   border: 1px solid var(--border);
   border-radius: 6px;
@@ -139,4 +142,111 @@ td {
 .status {
   text-align: center;
   color: var(--muted);
+}
+
+.section-heading,
+.actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.section-heading {
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.section-heading h1 {
+  margin: 0;
+}
+
+.button-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+}
+
+.button-link:hover {
+  background: var(--primary-hover);
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+.product-description {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.product-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.product-facts dt {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.product-facts dd {
+  margin: 0.25rem 0 0;
+  overflow-wrap: anywhere;
+}
+
+.product-form {
+  max-width: 36rem;
+}
+
+.status-form {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: end;
+  border-top: 1px solid var(--border);
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+}
+
+button.danger {
+  background: var(--error);
+}
+
+button.danger:hover:not(:disabled) {
+  background: #8b1d15;
+}
+
+.unread-count {
+  padding: 0.1rem 0.45rem;
+  border-radius: 1rem;
+  background: #e8eeff;
+  color: var(--primary-hover);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.notifications {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.notifications li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  border-top: 1px solid var(--border);
+  padding: 1rem 0;
+}
+
+.notifications p {
+  margin: 0.4rem 0;
+  overflow-wrap: anywhere;
 }

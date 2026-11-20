@@ -35,7 +35,7 @@ export class ProductRepository implements IProductRepository {
 
   async update(id: string, changes: ProductUpdate): Promise<Product | null> {
     const document = await ProductModel.findOneAndUpdate({ id }, changes, {
-      new: true,
+      returnDocument: "after",
       runValidators: true,
     }).exec();
     return document ? toProduct(document) : null;
@@ -48,7 +48,7 @@ export class ProductRepository implements IProductRepository {
     const document = await ProductModel.findOneAndUpdate(
       { id },
       { status },
-      { new: true, runValidators: true },
+      { returnDocument: "after", runValidators: true },
     ).exec();
     return document ? toProduct(document) : null;
   }
