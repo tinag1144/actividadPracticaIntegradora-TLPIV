@@ -27,3 +27,38 @@ export interface Credentials {
   email: string;
   password: string;
 }
+
+export const PRODUCT_STATUSES = ["DISPONIBLE", "SIN_STOCK", "DISCONTINUADO"] as const;
+export type ProductStatus = (typeof PRODUCT_STATUSES)[number];
+
+export const PRODUCT_STATUS_LABELS: Record<ProductStatus, string> = {
+  DISPONIBLE: "Disponible",
+  SIN_STOCK: "Sin stock",
+  DISCONTINUADO: "Discontinuado",
+};
+
+export interface ProductFields {
+  name: string;
+  description: string;
+  price: number;
+  stock: number;
+  category: string;
+}
+
+export interface Product extends ProductFields {
+  id: string;
+  status: ProductStatus;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Notification {
+  id: string;
+  productId: string;
+  productName: string;
+  oldStatus: ProductStatus;
+  newStatus: ProductStatus;
+  message: string;
+  read: boolean;
+  createdAt: string;
+}

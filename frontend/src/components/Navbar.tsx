@@ -1,8 +1,9 @@
 import { Link, NavLink, useNavigate } from "react-router";
 import { useAuth } from "../context/useAuth";
 import { Can } from "./Can";
+import { NotificationBell } from "./NotificationBell";
 
-export function Navbar() {
+export function Navbar({ notificationRevision }: { notificationRevision: number }) {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -20,15 +21,17 @@ export function Navbar() {
       {user ? (
         <>
           <nav className="nav-links">
-            <NavLink to="/" end>
-              Productos
-            </NavLink>
+            <Can permission="product:read">
+              <NavLink to="/products">Productos</NavLink>
+            </Can>
+            <Can permission="notification:read">
+              <NotificationBell key={user.id} revision={notificationRevision} />
+            </Can>
             <Can permission="user:read">
               <NavLink to="/admin/users">Usuarios</NavLink>
             </Can>
           </nav>
           <div className="nav-user">
-            {/* NotificationBell goes here */}
             <span>
               {user.email} <small>({user.role})</small>
             </span>
