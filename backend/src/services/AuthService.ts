@@ -4,7 +4,8 @@ import { ConflictError } from "../errors/ConflictError.js";
 import bcrypt from "bcrypt";
 import { type IRegisteredUser } from "./interfaces/IRegisteredUser.js";
 import { UnauthorizedError } from "../errors/UnauthorizedError.js";
-import jwt, { type SignOptions } from "jsonwebtoken";
+import jwt, { type JwtPayload, type SignOptions } from "jsonwebtoken";
+import { type IUserAccount } from "./interfaces/IUserAccount.js";
 
 
 export class AuthService {
@@ -42,7 +43,7 @@ export class AuthService {
 
   }
 
-  async login(email: string, password: string) {
+  async login(email: string, password: string): Promise<{ token: string; user: IUserAccount }> {
     const user = await this.userRepository.findByEmail(email);
 
     if (!user) {
@@ -63,8 +64,42 @@ export class AuthService {
       throw new Error("Internal server error");
     }
 
-    const token = jwt.sign({ id: user._id.toHexString() }, secret, { expiresIn: expiresIn as NonNullable<SignOptions["expiresIn"]> })
+    const userId = user._id.toHexString();
+    const token = jwt.sign({ id: userId }, secret, { expiresIn: expiresIn as NonNullable<SignOptions["expiresIn"]> })
 
-    return {token}
+    const account = await this.userRepository.findAccountById(userId);
+    if (!account) {
+      throw new UnauthorizedError("Invalid credentials");
+    }
+
+    return { token, user: account }
+  }
+
+  // Validates a JWT and returns the current user with fresh permissions from the database,
+  // so a role change takes effect without logging in again.
+  async verifyToken(token: string): Promise<IUserAccount> {
+    const secret = process.env.JWT_SECRET;
+    if (!secret) {
+      console.error("JWT_SECRET not set");
+      throw new Error("Internal server error");
+    }
+
+    let payload: string | JwtPayload;
+    try {
+      payload = jwt.verify(token, secret);
+    } catch {
+      throw new UnauthorizedError("Invalid or expired token");
+    }
+
+    if (typeof payload === "string" || typeof payload.id !== "string") {
+      throw new UnauthorizedError("Invalid or expired token");
+    }
+
+    const account = await this.userRepository.findAccountById(payload.id);
+    if (!account) {
+      throw new UnauthorizedError("Invalid or expired token");
+    }
+
+    return account;
   }
 }

@@ -42,4 +42,9 @@ export class AuthController {
       handleError(error, res);
     };
   };
+
+  // req.user is set by the authenticate middleware.
+  me(req: Request, res: Response): void {
+    res.status(200).json(req.user);
+  };
 };
