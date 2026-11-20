@@ -8,11 +8,11 @@ import { User } from "../models/user.model.js";
 import { type RoleName } from "../models/interfaces/IRole.interface.js";
 
 const PERMISSIONS = [
-  "producto:read",
-  "producto:create",
-  "producto:update",
-  "producto:change-status",
-  "producto:delete",
+  "product:read",
+  "product:create",
+  "product:update",
+  "product:change-status",
+  "product:delete",
   "subscription:create",
   "subscription:delete",
   "notification:read",
@@ -23,16 +23,16 @@ const PERMISSIONS = [
 const ROLE_PERMISSIONS: Record<RoleName, string[]> = {
   admin: PERMISSIONS,
   operador: [
-    "producto:read",
-    "producto:create",
-    "producto:update",
-    "producto:change-status",
+    "product:read",
+    "product:create",
+    "product:update",
+    "product:change-status",
     "subscription:create",
     "subscription:delete",
     "notification:read",
   ],
   usuario: [
-    "producto:read",
+    "product:read",
     "subscription:create",
     "subscription:delete",
     "notification:read",
